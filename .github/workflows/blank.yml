@@ -23,8 +23,17 @@ jobs:
       - name: Gradle ile derle
         run: ./gradlew assembleDebug
 
-      - name: APK dosyasını yükle
-        uses: actions/upload-artifact@v3
-        with:
-          name: MuCuteClient-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+      - name: APK'yi kopyala
+        run: |
+          mkdir -p apk
+          cp app/build/outputs/apk/debug/app-debug.apk apk/MuCuteClient.apk
+
+      - name: Değişiklikleri Git'e ekle
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add apk/MuCuteClient.apk
+          git commit -m "APK otomatik yüklendi"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
