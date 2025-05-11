@@ -23,5 +23,8 @@ jobs:
       - name: Gradle ile derle
         run: ./gradlew assembleDebug
 
-      - name: APK yolunu göster
-        run: ls -alh app/build/outputs/apk/debug/
+      - name: APK dosyasını yükle
+        uses: actions/upload-artifact@v2
+        with:
+          name: MuCuteClient-APK
+          path: app/build/outputs/apk/debug/app-debug.apk
