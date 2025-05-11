@@ -24,8 +24,7 @@ jobs:
         run: ./gradlew assembleDebug
 
       - name: APK dosyasını yükle
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@7b8d97bdc8cd27a9e3c7d6e6d9a44ed4d8b0e327
         with:
           name: MuCuteClient-APK
           path: app/build/outputs/apk/debug/app-debug.apk
-          
