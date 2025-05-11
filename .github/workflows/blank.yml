@@ -17,8 +17,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Gradle'ı çalıştırılabilir yap
+        run: chmod +x ./gradlew
+
       - name: Gradle ile derle
         run: ./gradlew assembleDebug
 
-      - name: Debug APK yolunu yaz
+      - name: APK yolunu göster
         run: ls -alh app/build/outputs/apk/debug/
